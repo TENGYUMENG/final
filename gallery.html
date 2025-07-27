@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ne Zha Saga - Award-winning Records</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Serif+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .awards-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-red);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 2.8rem;
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .award-card {
+            background: var(--content-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .award-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(196, 30, 58, 0.5);
+        }
+
+        .award-header {
+            background: var(--section-bg);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .award-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+        }
+
+        .award-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .award-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--gold);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .award-content {
+            padding: 2.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .award-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80') center/cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .award-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(157, 54, 54, 0.2);
+            border-radius: 10px;
+            min-width: 200px;
+            margin: 0.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #d4d4d4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .trophy-wall {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .trophy {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .trophy:hover {
+            opacity: 1;
+            transform: translateY(-10px);
+        }
+
+        .quote-section {
+            background: linear-gradient(45deg, rgba(157, 54, 54, 0.3), rgba(26, 26, 46, 0.7));
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--gold);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: "";
+            font-size: 4rem;
+            position: absolute;
+            color: rgba(212, 175, 55, 0.3);
+        }
+
+        .quote-text::before {
+            top: -30px;
+            left: -10px;
+        }
+
+        .quote-text::after {
+            bottom: -60px;
+            right: -10px;
+            transform: rotate(180deg);
+        }
+
+        .quote-author {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: #d4d4d4;
+        }
+
+        @media (max-width: 768px) {
+            .award-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .award-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .award-title {
+                font-size: 1.5rem;
+            }
+
+            .award-content {
+                padding: 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 140px;
+                padding: 1rem;
+            }
+
+            .stat-value {
+                font-size: 1.8rem;
+            }
+
+            .quote-text {
+                font-size: 1.1rem;
+                padding: 0;
+            }
+        }
+
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--gold);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-dragon me-2"></i>Ne Zha Saga
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="characters.html">Characters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="highlights.html">Highlights</a></li>
+                    <li class="nav-item"><a class="nav-link  active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn login-btn" href="login.html">Login / Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Awards Section -->
+    <section class="awards-section">
+        <h2 class="section-title">Award-winning Record</h2>
+
+        <!-- Box Office Achievements -->
+        <div class="award-card">
+            <div class="award-header">
+                <div class="award-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <h3 class="award-title">Box Office Achievements</h3>
+            </div>
+            <div class="award-content">
+                <p>With a box office performance of more than 15.02 billion yuan, it surpassed Star Wars: The Force
+                    Awakens and rose to the fifth place in the global film history box office list.</p>
+                <p>The box office exceeded 7.2 billion, becoming the global single market box office champion. The
+                    cumulative box office exceeded 14.5 billion yuan, ranking seventh on the global film history box
+                    office.</p>
+                <p>It is the first film in Asia with a box office of more than 10 billion, the first film in China with
+                    a box office of more than 10 billion, and the first Asian film to enter the top 10 of the global box
+                    office list.</p>
+
+                <div class="award-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">¥15.02B</div>
+                        <div class="stat-label">Global Box Office</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">#5</div>
+                        <div class="stat-label">Global Ranking</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">#1</div>
+                        <div class="stat-label">Asian Film</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Director's Honour -->
+        <div class="award-card">
+            <div class="award-header">
+                <div class="award-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="award-title">Director's Honour</h3>
+            </div>
+            <div class="award-content">
+                <p>Director Dumpling won the Best Screenwriter Award at the 35th Popular Film Hundred Flowers Award for
+                    "Nezha 2", which is a contribution to the depth and innovation of Dumpling in script creation.</p>
+                <p>The box office record of the dumpling director surpassed that of Chen Sicheng to become the first
+                    director in China with the highest-grossing animated film series.</p>
+                <p>Dumpling's unique storytelling approach and visual style have set new standards for Chinese
+                    animation, earning international acclaim and recognition.</p>
+
+                <div class="award-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">35th</div>
+                        <div class="stat-label">Hundred Flowers Award</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">#1</div>
+                        <div class="stat-label">Chinese Director</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">12+</div>
+                        <div class="stat-label">Awards Won</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Industry Influence -->
+        <div class="award-card">
+            <div class="award-header">
+                <div class="award-icon">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <h3 class="award-title">Industry Influence</h3>
+            </div>
+            <div class="award-content">
+                <p>At the top of the global animated film box office list, it shows the competitiveness of Chinese
+                    animated films in the global market and sets a new milestone for domestic animated films.</p>
+                <p>The success of the film is not only an affirmation of the commercial success of films, but also marks
+                    the rise of Chinese animated films in the global market, showing the infinite potential of Chinese
+                    animated films.</p>
+                <p>The film has inspired a new generation of animators and filmmakers, demonstrating the power of
+                    cultural storytelling and the broad prospect of future development for Chinese cinema.</p>
+
+                <div class="award-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">#1</div>
+                        <div class="stat-label">Animated Film</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">60+</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">200M+</div>
+                        <div class="stat-label">Viewers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trophy Wall -->
+        <div class="trophy-wall">
+            <div class="trophy"><i class="fas fa-trophy"></i></div>
+            <div class="trophy"><i class="fas fa-medal"></i></div>
+            <div class="trophy"><i class="fas fa-star"></i></div>
+            <div class="trophy"><i class="fas fa-crown"></i></div>
+            <div class="trophy"><i class="fas fa-award"></i></div>
+            <div class="trophy"><i class="fas fa-film"></i></div>
+        </div>
+
+        <!-- Industry Quote -->
+        <div class="quote-section">
+            <p class="quote-text">"Ne Zha has redefined what's possible for Chinese animation, setting a new standard
+                for storytelling, visual effects, and cultural representation in global cinema."</p>
+            <div class="quote-author">- Global Film Review Magazine</div>
+        </div>
+
+        <!-- Floating decorative elements -->
+        <div class="floating-icons">
+            <div class="floating-icon" style="top: 10%; left: 5%;"><i class="fas fa-dragon"></i></div>
+            <div class="floating-icon" style="top: 30%; left: 85%;"><i class="fas fa-ring"></i></div>
+            <div class="floating-icon" style="top: 70%; left: 15%;"><i class="fas fa-fire"></i></div>
+            <div class="floating-icon" style="top: 40%; left: 60%;"><i class="fas fa-water"></i></div>
+            <div class="floating-icon" style="top: 85%; left: 75%;"><i class="fas fa-wind"></i></div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <h4 class="header-title">NE ZHA SAGA</h4>
+                    <p>An epic tale of rebellion and destiny</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-imdb"></i></a>
+                    </div>
+                    <p class="mt-3 mb-0">© 2025 Ne Zha Saga. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation for award cards on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const cards = document.querySelectorAll('.award-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.transitionDelay = `${index * 0.2}s`;
+
+                observer.observe(card);
+            });
+
+            // Trophy animation
+            const trophies = document.querySelectorAll('.trophy');
+            trophies.forEach(trophy => {
+                trophy.addEventListener('mouseenter', () => {
+                    trophy.style.animation = 'bounce 0.5s ease';
+                });
+
+                trophy.addEventListener('animationend', () => {
+                    trophy.style.animation = '';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

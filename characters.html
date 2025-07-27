@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ne Zha Character Introduction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Serif+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .banner {
+            height: 600px;
+            background: url('images/banner2.jpeg') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-title {
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.7);
+        }
+
+        .content-section {
+            background: var(--content-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80') center/cover;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: #c41e3a;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 2.8rem;
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .character-card {
+            display: flex;
+            margin-bottom: 3rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .character-img {
+            width: 35%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .character-card:hover .character-img img {
+            transform: scale(1.05);
+        }
+
+        .character-content {
+            width: 65%;
+            background: var(--primary-red);
+            padding: 2.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .character-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--gold);
+            position: relative;
+            display: inline-block;
+        }
+
+        .character-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .character-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .character-symbol {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.15;
+            color: var(--gold);
+        }
+
+        .character-role {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 992px) {
+            .character-card {
+                flex-direction: column;
+            }
+
+            .character-img,
+            .character-content {
+                width: 100%;
+            }
+
+            .character-img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .character-content {
+                padding: 1.8rem;
+            }
+
+            .character-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--gold);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-dragon me-2"></i>Ne Zha Saga
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="characters.html">Characters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="highlights.html">Highlights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn login-btn" href="login.html">Login / Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner"></section>
+    <!-- Character Introduction Section -->
+    <div class="container">
+        <section class="content-section">
+            <h2 class="section-title">Character Introduction</h2>
+
+            <!-- Ne Zha -->
+            <div class="character-card">
+                <div class="character-img">
+                    <img src="images/img4.jpg" alt="Ne Zha">
+                </div>
+                <div class="character-content">
+                    <i class="fas fa-fire character-symbol"></i>
+                    <h3 class="character-title">哪吒 Ne Zha</h3>
+                    <p class="character-desc">
+                        Originally reincarnated as a demon child, he was born with the misunderstanding and prejudice of
+                        the world. His personality was rebellious and frantic. He seemed cynical, but in fact he was
+                        soft-hearted and affectionate. After the heavenly disaster, he was determined to reshape Ao
+                        Bing's body, so he bravely embarked on a difficult journey to Yuxuguan. In the face of the
+                        hypocrisy and injustice of Yuxuguan, Ne Zha dared to rise up and resist. From resisting the
+                        established fate of individuals, he grew up to be a fearless hero who challenged the corrupt
+                        rules of society.
+                    </p>
+                    <div class="character-role">The Rebellious Hero</div>
+                </div>
+            </div>
+
+            <!-- Ao Bing -->
+            <div class="character-card">
+                <div class="character-img">
+                    <img src="images/img5.jpg" alt="Ao Bing">
+                </div>
+                <div class="character-content">
+                    <i class="fas fa-water character-symbol"></i>
+                    <h3 class="character-title">敖丙 Ao Bing</h3>
+                    <p class="character-desc">
+                        The third prince of the East China Sea Dragon Palace, who was reincarnated by Lingzhu. He is
+                        handsome in appearance and gentle in temperament. Since childhood, he has been carrying the
+                        heavy expectations of reviving the dragon clan in the pottery purgatory. Although he has a kind
+                        personality, he is also entangled and struggling. He is compatible with Nezha's soul. After
+                        being possessed by Nezha's body, he explores the truth together. In the process of resisting the
+                        pressure of the immortal world, he broke free from the shackles of the family. For the sake of
+                        justice and friendship, he firmly stood with Nezha and faced the unknown fate.
+                    </p>
+                    <div class="character-role">The Dragon Prince</div>
+                </div>
+            </div>
+
+            <!-- Taiyi Zhenren -->
+            <div class="character-card">
+                <div class="character-img">
+                    <img src="images/img6.jpeg" alt="Taiyi Zhenren">
+                </div>
+                <div class="character-content">
+                    <i class="fas fa-mountain character-symbol"></i>
+                    <h3 class="character-title">太乙真人 Taiyi Zhenren</h3>
+                    <p class="character-desc">
+                        The disciple of Yuan Shitian Zun, the master of Nezha. He is rich in shape, speaks a Sichuan
+                        dialect, witty and humorous, and kind. In 'Nezha's Demon leads to the World', the Chinese
+                        mistake caused the magic pill to give birth to Nazha. He felt deeply guilty. In 'Nezha 2', he
+                        used seven-color lotus to reshape the physical bodies of Nezha and Ao Bing, giving them a lot of
+                        help and guidance along the way, which is the warmth of master-apprentice love and justice
+                        symbol.
+                    </p>
+                    <div class="character-role">The Wise Mentor</div>
+                </div>
+            </div>
+
+            <!-- Immeasurable Fairy -->
+            <div class="character-card">
+                <div class="character-img">
+                    <img src="images/img7.jpeg" alt="Immeasurable Fairy">
+                </div>
+                <div class="character-content">
+                    <i class="fas fa-skull character-symbol"></i>
+                    <h3 class="character-title">无量仙翁 Immeasurable Fairy</h3>
+                    <p class="character-desc">
+                        The academics of Yuxu officials can maintain justice on the surface, but they are extremely
+                        hypocritical in reality. In order to consolidate the rule of the fairy world, he manipulated the
+                        demon extermination team to kill indiscriminately and refine the monsters into fairy elixirs.
+                        His existence is to feed him. The biggest obstacle to Ao Nei and others on the road of pursuing
+                        justice and resisting oppression is the representative of the black power system. In the face of
+                        the bluff and injustice of the Jade Palace, they dare to rise up and resist. From opposing the
+                        established fate of individuals, they have grown into fearless heroes who challenge the rotten
+                        rules of society.
+                    </p>
+                    <div class="character-role">The Hypocritical Antagonist</div>
+                </div>
+            </div>
+
+            <!-- Floating decorative elements -->
+            <div class="floating-icons">
+                <div class="floating-icon" style="top: 10%; left: 5%;"><i class="fas fa-dragon"></i></div>
+                <div class="floating-icon" style="top: 30%; left: 85%;"><i class="fas fa-ring"></i></div>
+                <div class="floating-icon" style="top: 70%; left: 15%;"><i class="fas fa-fire"></i></div>
+                <div class="floating-icon" style="top: 40%; left: 60%;"><i class="fas fa-water"></i></div>
+                <div class="floating-icon" style="top: 85%; left: 75%;"><i class="fas fa-wind"></i></div>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <h4 class="header-title">NE ZHA SAGA</h4>
+                    <p>An epic tale of rebellion and destiny</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-imdb"></i></a>
+                    </div>
+                    <p class="mt-3 mb-0">© 2025 Ne Zha Saga. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add animation to character cards on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const cards = document.querySelectorAll('.character-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.transitionDelay = `${index * 0.2}s`;
+
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
